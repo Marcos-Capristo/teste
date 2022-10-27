@@ -50,37 +50,81 @@ class Report{
         const numero = document.querySelector('#inumber').value
         const data = document.querySelector('#idesignationdate').value
         if(numero != ''){
-            this.number = numero
+            this.number = formatMilhar(numero)
         }
-        //if(data instanceof Date){
-            this.designatedDate = data
-       // }
-        //if (this.number != ''){
-            texto = `Laudo ${this.number}`
-        //}
-        //if (this.designatedDate != ''){
-            texto += `/${this.designatedDate.getFullYear()}`
-        //}
+        this.designatedDate = data
+        texto = `Laudo ${this.number}`
+        texto += `/${this.designatedDate.getFullYear()}`
         const element = document.querySelector(parentElement)
         element.className = 'title_0'
         element.innerHTML=texto
+    }
+    writePreamble(){
+        const date = formatDate(report.designatedDate)
+        const director = document.querySelector('#idirector').value
+        const expert = document.querySelector('#iexpert').value
+        const delegate = document.querySelector('#idelegate').value
+        let texto = `Em ${date}, na cidade de Limeira e no Instituto de Criminalística, da Superintendência da Polícia Técnico-Científica, da Secretaria de Segurança Pública do Estado de São Paulo, em conformidade com o disposto no art. 178 do Decreto-Lei 3689 de 3-10-1941 e Decreto-Lei 42847 de 9-2-1998, pelo Diretor deste Instituto de Criminalística, o Perito Criminal ${director}, foi ${expert} para proceder ao Exame Pericial especificado em requisição de exame assinada pela Autoridade Policial, ${delegate}.`;
+ 
+        document.querySelector('#i_panel_preamble').innerHTML = texto
     }
 }
 
 const report = new Report()
 
-function showModal(){
+function inverter(num){
+    num1 = num
+    resultado = ''
+    for (i=num1.length-1;i>=0;i--){
+        resultado+=num1[i]
+    }
+    return resultado
+}
+
+function formatMilhar(num){
+let num1 = inverter(num)
+resultado = ''
+    for(i=0;i<num1.length;i++){
+        resultado += num1[i]
+        if (i%3==2 && i!=num1.length-1){
+            resultado += `.` 
+        }               
+    }
+    return inverter(resultado)
+}
+
+function formatDate(data){
+    const date = new Date(data)
+    const day = date.getDate()
+    const month = date.getMonth()+1
+    const year = date.getFullYear()
+    return `${day}-${month}-${year}`
+}
+
+function showModal(element){
     const modal = document.querySelector('#modal').style
-    modal.display = 'block'
+    const submodal = document.querySelector(element).style
+    hideModal()
+    modal.opacity = '1'   
+    modal.pointerEvents = 'all'
+    modal.transition = '0.5s'
+    submodal.display = 'block'
+    submodal.opacity = '1'   
+    submodal.pointerEvents = 'all'
+    submodal.transition = '0.5s'
 }
 
 function hideModal(){
     const modal = document.querySelector('#modal').style
     const submodal = document.querySelectorAll('.submodal')
-    modal.display = 'none'
-    modal.transition = '2.5s'
+    modal.opacity = '0'   
+    modal.pointerEvents = 'none'
+    modal.transition = '0.5s'
     for (let i = 0; i < submodal.length; i++) {
-        submodal[i].style.display = "none";
+        submodal[i].style.opacity = '0'
+        submodal[i].transition = '0.5s'
+        submodal[i].pointerEvents = 'none'
+        submodal[i].style.display = 'none'
     }
 }
 
@@ -95,14 +139,20 @@ function todayDate() {
 }
 document.querySelector('#idesignationdate').value = todayDate('Sun May 11,2014');
 
-const menuNumber = document.querySelector('#i_number')
-menuNumber.addEventListener('click', function(){
-    showModal()
-    document.querySelector('#submodalnumber').style.display = 'block'
+document.querySelector('#i_number').addEventListener('click', function(){
+    showModal('#submodalnumber')
 })
 
-const btnNumber = document.querySelector('#btn_number')
-btnNumber.addEventListener('click', function(){
+document.querySelector('#i_preamble').addEventListener('click', function(){
+    showModal('#submodalpreamble')
+})
+
+document.querySelector('#btn_number').addEventListener('click', function(){
     report.writeNumber('#i_panel_number')
+    hideModal()
+})
+
+document.querySelector('#btn_preamble').addEventListener('click', function(){
+    report.writePreamble()
     hideModal()
 })

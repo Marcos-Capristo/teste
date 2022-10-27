@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <!-- Início das janelas de edição -->
+<!-- Início das janelas de edição -->
     <div id="modal">
         <div class="submodal" id="submodalnumber">
             <h2>Número do Laudo</h2>
@@ -21,6 +21,18 @@
             <input type="date" id="idesignationdate"></p>
             <hr>
             <input type="button" id="btn_number" value="Enviar">
+        </div>
+        <div class="submodal" id="submodalpreamble">
+            <h2>Preâmbulo</h2>
+            <hr>
+            <p>Diretor</p>
+            <input type="text" id="idirector">
+            <p>Perito</p>
+            <input type="text" id="iexpert">
+            <p>Delegado</p>
+            <input type="text" id="idelegate">
+            <hr>
+            <input type="button" id="btn_preamble" value="Enviar">
         </div>
     </div>
 
@@ -48,6 +60,7 @@
 
     <!-- Corpo do Laudo -->
     <div id="report">
+<!-- Cabeçalho -->
         <header>
             <div><img src="img/brasao.png" alt="brasão" class="logo"></div>
             <div>
@@ -59,8 +72,12 @@
             </div>
             <div><img src="img/logopc.png" alt="logo" class="logo"></div>
         </header>
-        <div id="i_panel_number"></div>
         <article>
+<!-- Número do Laudo-->
+        <div id="i_panel_number"></div>
+<!-- Preâmbulo -->
+        <div id="i_panel_preamble"></div>
+        
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio cum consectetur, recusandae repellat commodi praesentium nesciunt assumenda neque sapiente? Eius doloribus laboriosam a consequuntur officia, ipsa quam blanditiis assumenda beatae!</p>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas enim reiciendis itaque aliquam sint consectetur explicabo eos, molestias ipsam eius tenetur, sit perferendis consequuntur porro quaerat architecto expedita? Quasi, mollitia quos culpa necessitatibus deserunt qui deleniti eligendi vero totam vel sequi blanditiis nemo neque veritatis et saepe ad iure ipsam quas suscipit velit maxime modi esse? Sed sint fugiat sit, accusamus incidunt necessitatibus repellat iure dolores reiciendis recusandae similique blanditiis neque dolore? Consequuntur quas ratione, fugiat porro natus facere, error rerum excepturi nulla possimus deleniti iure accusantium eius dolore sit aut non iste id autem explicabo blanditiis! Minima maiores exercitationem aliquid delectus, eius ad voluptatum facilis aliquam, nesciunt iure labore distinctio eum ab sequi laboriosam unde eveniet tempora, nulla reiciendis dicta recusandae provident? Ad nemo deleniti ducimus ratione veniam ipsum unde autem cupiditate sequi. Natus optio, est dolores earum cumque laudantium in nisi rerum error ipsum molestias voluptas facilis ullam, asperiores reprehenderit sed doloribus dolor numquam maiores commodi voluptatibus recusandae, deleniti quas? Voluptas magnam id quidem nesciunt. Ut consectetur consequatur quod amet non ad, nulla quo omnis alias tenetur iste autem mollitia possimus natus sunt dolores. Dolor, voluptatem dolorum sed natus molestiae iste corrupti saepe eos hic, ex debitis adipisci!</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos animi veniam nulla consectetur illo, doloremque inventore odit accusamus, excepturi ea ipsa laudantium in quo soluta. Ex voluptatibus fugiat blanditiis pariatur.</p>
