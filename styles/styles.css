@@ -36,21 +36,38 @@ body p{
     transform: translate(-50%, -50%);
     border: 1px solid black;
     border-radius: 0.50rem;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     padding: 5px 20px 5px 20px;
     opacity: 0;
     pointer-events: none;
-    transition: 0.5;
 }
 .submodal > h2{
     width: 100%;
+    text-align: right;
+    color: gray;
+    padding: 5px 0px 10px 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.2rem;
 }
-.submodal > p{
+.submodal > p, .submodal > p > select{
     width: 100%;
-    padding: 10px 0px 0px 20px;
     font-size: 0.7rem;
+    border: none;
+    background-color: whitesmoke;
 }
-
+.submodal > input[type=text], .submodal > input[type=date]{
+    width: 400px;
+    line-height: 1.5rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid blue;
+}
+.submodal > input[type=button]{
+    padding: 2px 10px 2px 10px;
+    margin: 10px 2px 10px 2px;
+    cursor: pointer;
+}
 #report{
     width: 800px;
     margin: auto;
@@ -60,6 +77,7 @@ body p{
 .menu{
     position: fixed;
     background-color: gray;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
     width: 100%;
     list-style:none;
     border:1px solid #c0c0c0;
@@ -133,7 +151,7 @@ header input{
     border: none;
 }
 article{
-    padding: 0px 20px 0px 40px;
+    padding: 0px 40px 0px 80px;
 }
 #i_panel_number{
     width: 100%;

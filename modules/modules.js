@@ -61,12 +61,30 @@ class Report{
     }
     writePreamble(){
         const date = formatDate(report.designatedDate)
-        const director = document.querySelector('#idirector').value
-        const expert = document.querySelector('#iexpert').value
-        const delegate = document.querySelector('#idelegate').value
-        let texto = `Em ${date}, na cidade de Limeira e no Instituto de Criminalística, da Superintendência da Polícia Técnico-Científica, da Secretaria de Segurança Pública do Estado de São Paulo, em conformidade com o disposto no art. 178 do Decreto-Lei 3689 de 3-10-1941 e Decreto-Lei 42847 de 9-2-1998, pelo Diretor deste Instituto de Criminalística, o Perito Criminal ${director}, foi ${expert} para proceder ao Exame Pericial especificado em requisição de exame assinada pela Autoridade Policial, ${delegate}.`;
- 
+        let director = document.querySelector('#idirector').value
+        let expert = document.querySelector('#iexpert').value
+        let delegate = document.querySelector('#idelegate').value
+        if(document.querySelector('#selectdireitor').value == 'Diretor'){
+            director = `pelo Diretor deste Instituto de Criminalística, o Perito Criminal Dr. ${director}`
+        }else{
+            director = `pela Diretora deste Instituto de Criminalística, a Perita Criminal Dra. ${director}`
+        }
+        if(document.querySelector('#selectexpert').value == 'Perito'){
+            expert = `designado o Perito Criminal ${expert}`
+        }else{
+            expert = `designada a Perita Criminal ${expert}`
+        } 
+        if(document.querySelector('#selectdelegate').value == 'Delegado'){
+            delegate = `o Delegado de Polícia Dr. ${delegate}`
+        }else{
+            delegate = `a Delegada de Polícia Dra.  ${delegate}`
+        }           
+        let texto = `Em ${date}, na cidade de Limeira e no Instituto de Criminalística, da Superintendência da Polícia Técnico-Científica, da Secretaria de Segurança Pública do Estado de São Paulo, em conformidade com o disposto no art. 178 do Decreto-Lei 3689 de 3-10-1941 e Decreto-Lei 42847 de 9-2-1998, ${director}, foi ${expert} para proceder ao Exame Pericial especificado em requisição de exame assinada pela Autoridade Policial, ${delegate}.` 
         document.querySelector('#i_panel_preamble').innerHTML = texto
+    }
+    writeObjective(){
+        let texto = `<h2>Objetivo</h2><p>Texto do objetovo será inserido aqui.</p>`
+        document.querySelector('#i_panel_objective').innerHTML = texto
     }
 }
 
@@ -147,6 +165,10 @@ document.querySelector('#i_preamble').addEventListener('click', function(){
     showModal('#submodalpreamble')
 })
 
+document.querySelector('#i_objective').addEventListener('click', function(){
+    showModal('#submodalobjective')
+})
+
 document.querySelector('#btn_number').addEventListener('click', function(){
     report.writeNumber('#i_panel_number')
     hideModal()
@@ -154,5 +176,10 @@ document.querySelector('#btn_number').addEventListener('click', function(){
 
 document.querySelector('#btn_preamble').addEventListener('click', function(){
     report.writePreamble()
+    hideModal()
+})
+
+document.querySelector('#btn_objective').addEventListener('click', function(){
+    report.writeObjective()
     hideModal()
 })
