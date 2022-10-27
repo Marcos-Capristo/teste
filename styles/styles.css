@@ -5,12 +5,15 @@
     margin:0px;
     padding: 0px;
     box-sizing: border-box;
-    text-align: justify;
 }
 html, body{
     background-color: gray;
     font-size: 12pt;
     line-height: 1.5rem;
+    text-align: justify;
+}
+body p{
+    padding-bottom: 1rem;
 }
 #modal{
     display: none;
@@ -83,7 +86,7 @@ html, body{
 }    
 .menu li  ul{
     position:absolute;
-    top:35px;
+    top:33px;
     left:0;
     background-color:gray;
     display:none;
@@ -110,6 +113,7 @@ header > div >p{
     font-size: 0.9rem;
     line-height: 1rem;
     margin: auto;
+    padding: 0;
 }
 
 header > div >p.top2{

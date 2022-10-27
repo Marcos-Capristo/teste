@@ -31,7 +31,7 @@ class Panel{
 class Report{
     constructor(){
         this.number = ''
-        this.designatedDate = ''
+        this.designatedDate = new Date()
     }
     set number(number){
         this._number = number.toUpperCase()
@@ -47,14 +47,20 @@ class Report{
     }
     writeNumber(parentElement){
         let texto = 'Laudo Técncio Pericial'
-        this.number = document.querySelector('#inumber').value
-        this.designatedDate = document.querySelector('#idesignationdate').value
-        if (this.number != ''){
+        const numero = document.querySelector('#inumber').value
+        const data = document.querySelector('#idesignationdate').value
+        if(numero != ''){
+            this.number = numero
+        }
+        //if(data instanceof Date){
+            this.designatedDate = data
+       // }
+        //if (this.number != ''){
             texto = `Laudo ${this.number}`
-        }
-        if (this.designatedDate != ''){
+        //}
+        //if (this.designatedDate != ''){
             texto += `/${this.designatedDate.getFullYear()}`
-        }
+        //}
         const element = document.querySelector(parentElement)
         element.className = 'title_0'
         element.innerHTML=texto
@@ -77,6 +83,17 @@ function hideModal(){
         submodal[i].style.display = "none";
     }
 }
+
+function todayDate() {
+    var d = new Date(), // para atual retirar o date e na invocação da função retirar o argumento.
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    return [year, month, day].join('-');
+}
+document.querySelector('#idesignationdate').value = todayDate('Sun May 11,2014');
 
 const menuNumber = document.querySelector('#i_number')
 menuNumber.addEventListener('click', function(){
