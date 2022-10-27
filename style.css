@@ -11,12 +11,29 @@ h2{
     line-height: 200%;
 }
 
+    textarea{
+        width: 600px;
+        height: 300px;
+        resize: vertical;
+    }
+
+
 header{
-    background-color: var(--azul);
-    color: var(--branca);
-    text-align: center;
+    margin: auto;
+    width:100%;
     padding-top: 50px;
     padding-bottom: 50px;
+}
+
+header > img{
+    margin: auto;
+    display: inline-block;
+    width:90px;
+}
+
+header > div{
+    display: inline-block;
+    text-align: center;
 }
 
 body{
@@ -34,6 +51,13 @@ main{
     min-width: 320px;
 }
 
+
+
+.title_0{
+    margin: auto;
+    text-align: center;
+}
+
 main p{
     margin-left: 60px;
 }
@@ -45,4 +69,28 @@ footer{
 
 img{
     width: 100%;
+}
+
+.panel{
+    width: 100%;
+    max-width: 21cm;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: gray;
+}
+
+.panel_header{
+    color: white;
+    padding: 0px 10px 0px 20px;
+}
+
+.panel_contents{
+    background-color: whitesmoke;
+    color: black;
+}
+
+.panel_footer{
+    color: whilte;
+    padding: 0px 10px 0px 20px;
 }
