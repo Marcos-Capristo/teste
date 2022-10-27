@@ -40,18 +40,20 @@ class Report{
         return this._number
     }
     set designatedDate(designatedDate){
-        this._designatedDate = designatedDate
+        this._designatedDate = new Date(designatedDate)
     }
     get designatedDate(){
         return this._designatedDate
     }
     writeNumber(parentElement){
         let texto = 'Laudo Técncio Pericial'
+        this.number = document.querySelector('#inumber').value
+        this.designatedDate = document.querySelector('#idesignationdate').value
         if (this.number != ''){
             texto = `Laudo ${this.number}`
         }
         if (this.designatedDate != ''){
-            texto += `/${this.designatedDate}`
+            texto += `/${this.designatedDate.getFullYear()}`
         }
         const element = document.querySelector(parentElement)
         element.className = 'title_0'
@@ -60,3 +62,30 @@ class Report{
 }
 
 const report = new Report()
+
+function showModal(){
+    const modal = document.querySelector('#modal').style
+    modal.display = 'block'
+}
+
+function hideModal(){
+    const modal = document.querySelector('#modal').style
+    const submodal = document.querySelectorAll('.submodal')
+    modal.display = 'none'
+    modal.transition = '2.5s'
+    for (let i = 0; i < submodal.length; i++) {
+        submodal[i].style.display = "none";
+    }
+}
+
+const menuNumber = document.querySelector('#i_number')
+menuNumber.addEventListener('click', function(){
+    showModal()
+    document.querySelector('#submodalnumber').style.display = 'block'
+})
+
+const btnNumber = document.querySelector('#btn_number')
+btnNumber.addEventListener('click', function(){
+    report.writeNumber('#i_panel_number')
+    hideModal()
+})
