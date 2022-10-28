@@ -11,17 +11,22 @@
 <body>
 
 <!-- Início das janelas de edição -->
+
     <div id="modal">
+
+        <!-- NÚMERO DO LAUDO-->
         <div class="submodal" id="submodalnumber">
             <h2>Número do Laudo</h2>
             <hr>
             <p>REP</p>
-            <input type="text" id="inumber">
+            <input type="text" class="longetext" id="inumber">
             <p>Data de Designação</p>
-            <input type="date" id="idesignationdate">
+            <input type="date" class="longetext" id="idesignationdate">
             <hr>
             <input type="button" id="btn_number" value="Enviar">
         </div>
+
+        <!-- PREÂMBULO -->
         <div class="submodal" id="submodalpreamble">
             <h2>Preâmbulo</h2>
             <hr>
@@ -29,27 +34,37 @@
                 <option value="Diretor">Diretor</option>
                 <option value="Diretora">Diretora</option>
             </select></p>
-            <input type="text" id="idirector">
+            <input type="text" class="longetext" id="idirector">
             <p><select id="selectexpert">
                 <option value="Perito">Perito</option>
                 <option value="Perita">Perita</option>
             </select></p>
-            <input type="text" id="iexpert">
+            <input type="text" class="longetext" id="iexpert">
             <p><select id="selectdelegate">
                 <option value="Delegado">Delegado</option>
                 <option value="Delegada">Delegada</option>
             </select></p>
-            <input type="text" id="idelegate">
+            <input type="text" class="longetext" id="idelegate">
             <hr>
             <input type="button" id="btn_preamble" value="Enviar">
         </div>
+
+        <!-- OBJETIVO -->
         <div class="submodal" id="submodalobjective">
             <h2>Objetivo</h2>
             <hr>
+            <p><select id="selectrdo">
+                <option value="RDO">RDO</option>
+                <option value="BO">BO</option>
+                <option value="IP">IP</option>
+                <option value="Tel">Tel</option>
+            </select></p>
+            <input type="text" class="medletext" id="irdo">
+            <input type="text" class="medletext" id="idelpol">
             <p>Objetivo do Exame</p>
-            <input type="text" id="iobjective">
+            <input type="text" class="longetext" id="iobjective">
             <p>Natureza</p>
-            <input type="text" id="inature">
+            <input type="text" class="longetext" id="inature">
             <hr><input type="button" id="btn_objective" value="Enviar">
         </div>
     </div>

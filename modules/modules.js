@@ -83,8 +83,22 @@ class Report{
         document.querySelector('#i_panel_preamble').innerHTML = texto
     }
     writeObjective(){
-        let texto = `<h2>Objetivo</h2><p>Texto do objetovo será inserido aqui.</p>`
-        document.querySelector('#i_panel_objective').innerHTML = texto
+        const objective = document.querySelector('#iobjective').value
+        const nature = `${document.querySelector('#inature').value}.`
+        const selectRdo = document.querySelector('#selectrdo').value
+        const year = this.designatedDate.getFullYear()
+        let rdo = `${document.querySelector('#irdo').value.toUpperCase().trim()}`
+        let delpol = document.querySelector('#idelpol').value.trim()
+        if(delpol!=''){
+            delpol = ` - ${delpol}`
+        }
+        if(selectRdo == 'Tel'){
+            rdo = `recebida via telefonema e e-mail${delpol}`
+        }else{
+            rdo = `referente ao ${selectRdo} ${rdo}/${year}${delpol},`
+        }
+        let texto = `O objetivo do exame pericial, em conformidade com a requisição ${rdo} era ${objective}, sendo sua natureza, ${nature}`
+        document.querySelector('#i_panel_objective').innerHTML = `<h2>Objetivo</h2><p>${texto}</p>`
     }
 }
 
