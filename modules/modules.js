@@ -139,6 +139,10 @@ class Report{
         }   
         document.querySelector('#i_panel_historic').innerHTML = `<h2>${title}</h2><p>${texto}.</p>`
     }
+    writeInforms(){
+        let delta = quill.root.innerHTML
+        document.querySelector('#i_panel_informs').innerHTML = delta
+    }
 }
 
 const report = new Report()
@@ -239,6 +243,10 @@ document.querySelector('#selectlocal').addEventListener('change', function(){
     }
 })
 
+let quill = new Quill('#quillinforms', {
+    theme: 'snow'
+  });
+
 document.querySelector('#i_number').addEventListener('click', function(){
     showModal('#submodalnumber')
 })
@@ -253,6 +261,10 @@ document.querySelector('#i_objective').addEventListener('click', function(){
 
 document.querySelector('#i_historic').addEventListener('click', function(){
     showModal('#submodalhistoric')
+})
+
+document.querySelector('#i_informs').addEventListener('click', function(){
+    showModal('#submodalinforms')
 })
 
 document.querySelector('#btn_number').addEventListener('click', function(){
@@ -272,5 +284,10 @@ document.querySelector('#btn_objective').addEventListener('click', function(){
 
 document.querySelector('#btn_historic').addEventListener('click', function(){
     report.writeHistoric()
+    hideModal()
+})
+
+document.querySelector('#btn_informs').addEventListener('click', function(){
+    report.writeInforms()
     hideModal()
 })
