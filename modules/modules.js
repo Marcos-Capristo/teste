@@ -32,6 +32,7 @@ class Report{
     constructor(){
         this.number = ''
         this.designatedDate = new Date()
+        this.examDate = new Date()
     }
     set number(number){
         this._number = number.toUpperCase()
@@ -44,6 +45,12 @@ class Report{
     }
     get designatedDate(){
         return this._designatedDate
+    }
+    set examDate(examDate){
+        this.__examDate = new Date(examDate)
+    }
+    get examDate(){
+        return this.__examDate
     }
     writeNumber(parentElement){
         let texto = 'Laudo Técncio Pericial'
@@ -83,6 +90,7 @@ class Report{
         document.querySelector('#i_panel_preamble').innerHTML = texto
     }
     writeObjective(){
+        const title = document.querySelector('#titleobjective').value.trim()
         const objective = document.querySelector('#iobjective').value
         const nature = `${document.querySelector('#inature').value}.`
         const selectRdo = document.querySelector('#selectrdo').value
@@ -97,8 +105,27 @@ class Report{
         }else{
             rdo = `referente ao ${selectRdo} ${rdo}/${year}${delpol},`
         }
-        let texto = `O objetivo do exame pericial, em conformidade com a requisição ${rdo} era ${objective}, sendo sua natureza, ${nature}`
-        document.querySelector('#i_panel_objective').innerHTML = `<h2>Objetivo</h2><p>${texto}</p>`
+        const texto = `O objetivo do exame pericial, em conformidade com a requisição ${rdo} era ${objective}, sendo sua natureza, ${nature}`
+        document.querySelector('#i_panel_objective').innerHTML = `<h2>${title}</h2><p>${texto}</p>`
+    }
+    writeHistoric(){
+        const title = document.querySelector('#titlehistoric').value.trim()
+        let expert = document.querySelector('#iexpert').value.trim()
+        let local = `, ${document.querySelector('#ilocaltype').value.trim()}`
+        if(document.querySelector('#selectexpert').value == 'Perito'){
+            expert = `o Perito Criminal ${expert}`
+        }else{
+            expert = `a Perita Criminal ${expert}`
+        } 
+        let date = formatDate(report.examDate)
+        let ftp = document.querySelector('#ifotografo').value.trim()
+        if (ftp != ''){
+            ftp = `a equipe pericial, composta pel${expert} e ${document.querySelector('#selectftp').value} ${ftp},`
+            }else{
+            ftp = `${expert}`
+            }
+        const texto = `Em ${date}, ${ftp} dirigiu-se-se ao local indicado`
+        document.querySelector('#i_panel_historic').innerHTML = `<h2>${title}</h2><p>${texto}${local}.</p>`
     }
 }
 
@@ -170,6 +197,7 @@ function todayDate() {
     return [year, month, day].join('-');
 }
 document.querySelector('#idesignationdate').value = todayDate('Sun May 11,2014');
+document.querySelector('#iexamdate').value = todayDate('Sun May 11,2014');
 
 document.querySelector('#i_number').addEventListener('click', function(){
     showModal('#submodalnumber')
@@ -181,6 +209,10 @@ document.querySelector('#i_preamble').addEventListener('click', function(){
 
 document.querySelector('#i_objective').addEventListener('click', function(){
     showModal('#submodalobjective')
+})
+
+document.querySelector('#i_historic').addEventListener('click', function(){
+    showModal('#submodalhistoric')
 })
 
 document.querySelector('#btn_number').addEventListener('click', function(){
@@ -195,5 +227,10 @@ document.querySelector('#btn_preamble').addEventListener('click', function(){
 
 document.querySelector('#btn_objective').addEventListener('click', function(){
     report.writeObjective()
+    hideModal()
+})
+
+document.querySelector('#btn_historic').addEventListener('click', function(){
+    report.writeHistoric()
     hideModal()
 })

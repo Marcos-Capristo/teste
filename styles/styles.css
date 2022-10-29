@@ -45,7 +45,7 @@ body p{
     width: 100%;
     text-align: right;
     color: gray;
-    padding: 5px 0px 10px 0px;
+    padding: 20px 0px 10px 0px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 1.2rem;
 }
@@ -55,12 +55,11 @@ body p{
     border: none;
     background-color: whitesmoke;
 }
-.submodal > input[type=text], .submodal > input[type=date]{
+.submodal > input[type=text], .submodal > input[type=date], input[type=time]{
     line-height: 1.5rem;
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 1px solid blue;
 }
 .submodal > input[type=button]{
     padding: 2px 10px 2px 10px;
@@ -73,7 +72,16 @@ body p{
 .medletext{
     width: 195px;
 }
-
+.submodal > .title{
+    width: 100%;
+    background-color: whitesmoke;
+    border: none;
+    color: gray;
+    text-align: left;
+    font-size: 1.2rem;
+    padding: 20px 0px 10px 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
 #report{
     width: 800px;
     margin: auto;
@@ -158,6 +166,13 @@ header input{
 }
 article{
     padding: 0px 40px 0px 80px;
+}
+article h2{
+    padding: 20px 0px 0px 0px;
+    font-size: 1.2rem;
+}
+article p{
+    padding: 5px 0px 10px 0px;
 }
 #i_panel_number{
     width: 100%;

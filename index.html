@@ -51,7 +51,7 @@
 
         <!-- OBJETIVO -->
         <div class="submodal" id="submodalobjective">
-            <h2>Objetivo</h2>
+            <input type="text" class="title" id="titleobjective" value="Objetivo"></input>
             <hr>
             <p><select id="selectrdo">
                 <option value="RDO">RDO</option>
@@ -60,13 +60,37 @@
                 <option value="Tel">Tel</option>
             </select></p>
             <input type="text" class="medletext" id="irdo">
-            <input type="text" class="medletext" id="idelpol">
+            <input type="text" class="medletext" id="idelpol" placeholder="Delegacia ...">
             <p>Objetivo do Exame</p>
             <input type="text" class="longetext" id="iobjective">
             <p>Natureza</p>
             <input type="text" class="longetext" id="inature">
-            <hr><input type="button" id="btn_objective" value="Enviar">
+            <hr>
+            <input type="button" id="btn_objective" value="Enviar">
         </div>
+
+        <!-- HISTÓRICO -->
+        <div class="submodal" id="submodalhistoric">
+            <input type="text" class="title" id="titlehistoric" value="Histórico"></input>
+            <hr>
+            <p>Data e hora do Exame</p>
+            <input type="date" class="medletext" id="iexamdate">
+            <input type="time" class="medletext" id="iexamtime">
+            <p>
+                <select id="selectftp" class="medletext">
+                    <option class="medletext" value="pelo Fotógrafo Técnico Pericial">Fotógrafo</option>
+                    <option class="medletext" value="pela Fotógrafa Técnica Pericial">Fotógrafa</option>
+                    <option class="medletext" value="pelo Perito Criminal">Perito</option>
+                    <option class="medletext" value="pela Perita Criminal">Perita</option>
+                </select>
+            </p>
+            <input type="text" class="longetext" id="ifotografo">
+            <p>Local</p>
+            <input type="text" class="longetext"  id="ilocaltype" placeholder="tipo de local, cidade, rua, numero, logradouro ...">
+            <hr>
+            <input type="button" id="btn_historic" value="Enviar">
+        </div>
+
     </div>
 
     <!-- Menu -->
@@ -112,6 +136,8 @@
         <div id="i_panel_preamble"></div>
 <!-- Objetivo -->
         <div id="i_panel_objective"></div>
+<!-- Histórico -->
+        <div id="i_panel_historic"></div>
         
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio cum consectetur, recusandae repellat commodi praesentium nesciunt assumenda neque sapiente? Eius doloribus laboriosam a consequuntur officia, ipsa quam blanditiis assumenda beatae!</p>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas enim reiciendis itaque aliquam sint consectetur explicabo eos, molestias ipsam eius tenetur, sit perferendis consequuntur porro quaerat architecto expedita? Quasi, mollitia quos culpa necessitatibus deserunt qui deleniti eligendi vero totam vel sequi blanditiis nemo neque veritatis et saepe ad iure ipsam quas suscipit velit maxime modi esse? Sed sint fugiat sit, accusamus incidunt necessitatibus repellat iure dolores reiciendis recusandae similique blanditiis neque dolore? Consequuntur quas ratione, fugiat porro natus facere, error rerum excepturi nulla possimus deleniti iure accusantium eius dolore sit aut non iste id autem explicabo blanditiis! Minima maiores exercitationem aliquid delectus, eius ad voluptatum facilis aliquam, nesciunt iure labore distinctio eum ab sequi laboriosam unde eveniet tempora, nulla reiciendis dicta recusandae provident? Ad nemo deleniti ducimus ratione veniam ipsum unde autem cupiditate sequi. Natus optio, est dolores earum cumque laudantium in nisi rerum error ipsum molestias voluptas facilis ullam, asperiores reprehenderit sed doloribus dolor numquam maiores commodi voluptatibus recusandae, deleniti quas? Voluptas magnam id quidem nesciunt. Ut consectetur consequatur quod amet non ad, nulla quo omnis alias tenetur iste autem mollitia possimus natus sunt dolores. Dolor, voluptatem dolorum sed natus molestiae iste corrupti saepe eos hic, ex debitis adipisci!</p>
