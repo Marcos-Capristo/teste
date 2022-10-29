@@ -110,22 +110,34 @@ class Report{
     }
     writeHistoric(){
         const title = document.querySelector('#titlehistoric').value.trim()
+        let date = formatDate(this.examDate)
+        let hour = formatTime('10:30')
         let expert = document.querySelector('#iexpert').value.trim()
-        let local = `, ${document.querySelector('#ilocaltype').value.trim()}`
+        let local = `${document.querySelector('#ilocaltype').value}`
+        let guarnicao = `${document.querySelector('#selectguarnicao').value}, representada na pessoa ${document.querySelector('#iguarnicaopatente').value.trim()} ${document.querySelector('#iguarnicaopessoa').value.trim()}, de posse da viatura ${document.querySelector('#iguarnicaovtr').value.trim()}`
+        let texto = ''
         if(document.querySelector('#selectexpert').value == 'Perito'){
             expert = `o Perito Criminal ${expert}`
         }else{
             expert = `a Perita Criminal ${expert}`
         } 
-        let date = formatDate(report.examDate)
         let ftp = document.querySelector('#ifotografo').value.trim()
-        if (ftp != ''){
-            ftp = `a equipe pericial, composta pel${expert} e ${document.querySelector('#selectftp').value} ${ftp},`
-            }else{
-            ftp = `${expert}`
-            }
-        const texto = `Em ${date}, ${ftp} dirigiu-se-se ao local indicado`
-        document.querySelector('#i_panel_historic').innerHTML = `<h2>${title}</h2><p>${texto}${local}.</p>`
+        texto = `Em ${date} às ${hour}, ${expert} e ${document.querySelector('#selectftp').value} ${ftp},`
+        switch(document.querySelector('#selectlocal').selectedIndex){
+        case 0:
+            texto += ` dirigiram-se ao local indicado, ${local}, e realizaram o exame requisitado. Quando da chegada da equipe, a ${guarnicao}, e que guarnecia o local, deu informes e acompanhou o exame`
+            break
+        case 1:
+            texto += ` realizaram o exame sobre o veículo apresentado na ${local}`
+            break
+        case 2:
+            texto += `dirigiram-se a ${local} e realizaram o exame requisitado. Quando da chegada da equipe, servidroes indicaram o veículo a ser examinado` 
+            break  
+        case 3:
+            texto += `dirigiram-se ao Pátio de Veículos ${local} e realizaram o exame requisitado. Quando da chegada da equipe, funcionários do pátio indicaram o veículo a ser examinado`
+            break
+        }   
+        document.querySelector('#i_panel_historic').innerHTML = `<h2>${title}</h2><p>${texto}.</p>`
     }
 }
 
@@ -158,6 +170,13 @@ function formatDate(data){
     const month = date.getMonth()+1
     const year = date.getFullYear()
     return `${day}-${month}-${year}`
+}
+
+function formatTime(_hora){
+    const hora = _hora
+    const hour = '10'
+    const min = '30'
+    return `${hour}h${min}`
 }
 
 function showModal(element){
@@ -198,6 +217,27 @@ function todayDate() {
 }
 document.querySelector('#idesignationdate').value = todayDate('Sun May 11,2014');
 document.querySelector('#iexamdate').value = todayDate('Sun May 11,2014');
+document.querySelector('#selectlocal').addEventListener('change', function(){
+    let element = document.querySelector('#ilocaltype')
+    switch(this.selectedIndex){
+    case 0:
+        element.value = ''
+        element.placeholder = 'ex: um imóvel residencial localizado na cidade de Limeira ...'
+        break
+    case 1:
+        element.value = 'base da EPCL - Equipe de Perícias Criminalísticas de Limeira'
+        element.placeholder = 'o nome da Base da Equipe de Perícias'
+        break
+    case 2: 
+        element.value = 'base do Plantão Policial da Delegacia Seccional de Limeira'
+        element.placeholder = 'o nome da delegacia e da cidade onde foi realizado o exame'
+        break
+    case 3: 
+        element.value = 'pátio Assist na cidade de Limeira'
+        element.placeholder = 'o nome do pátio e da cidade onde foi realizado o exame'
+        break
+    }
+})
 
 document.querySelector('#i_number').addEventListener('click', function(){
     showModal('#submodalnumber')

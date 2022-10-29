@@ -189,6 +189,9 @@ article p{
 .midletext{
     width: 200px;
 }
+.smalltext{
+    width:130px
+}
 .textbox{
     background-color: whitesmoke;
     width: 100%;

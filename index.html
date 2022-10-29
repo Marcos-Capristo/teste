@@ -78,19 +78,35 @@
             <input type="time" class="medletext" id="iexamtime">
             <p>
                 <select id="selectftp" class="medletext">
-                    <option class="medletext" value="pelo Fotógrafo Técnico Pericial">Fotógrafo</option>
-                    <option class="medletext" value="pela Fotógrafa Técnica Pericial">Fotógrafa</option>
-                    <option class="medletext" value="pelo Perito Criminal">Perito</option>
-                    <option class="medletext" value="pela Perita Criminal">Perita</option>
+                    <option class="medletext" value="o Fotógrafo Técnico Pericial">Fotógrafo</option>
+                    <option class="medletext" value="a Fotógrafa Técnica Pericial">Fotógrafa</option>
+                    <option class="medletext" value="o Perito Criminal">Perito</option>
+                    <option class="medletext" value="a Perita Criminal">Perita</option>
                 </select>
             </p>
             <input type="text" class="longetext" id="ifotografo">
-            <p>Local</p>
+            <p>
+            <select class = "medletext" id="selectlocal">
+                <option value="local">Exame de Local Externo</option>
+                <option value="veiculoepcl">Veículo Apresentado na Base</option>
+                <option value="veiculoepcl">Veículo Apresentado na Delegacia</option>
+                <option value="veiculopatio">Veículo Apresentado no Pátio</option>
+            </select></p>
             <input type="text" class="longetext"  id="ilocaltype" placeholder="tipo de local, cidade, rua, numero, logradouro ...">
+            <p>
+                <select class="medletext"  id="selectguarnicao">
+                    <option value="Polícia Militar">Polícia Militar</option>
+                    <option value="Polícia Militar Rodoviária">Polícia Militar Rodoviária</option>
+                    <option value="Guarda Civil Metropolitana">Guarda Civil Metropolitana</option>
+                    <option value="Polícia Civil">Polícia Civil</option>
+                </select>
+            </p>
+            <input type="text" class="smalltext" id="iguarnicaopatente" placeholder="do / da + patente">
+            <input type="text" class="smalltext" id="iguarnicaopessoa" placeholder="responsável">
+            <input type="text" class="smalltext" id="iguarnicaovtr" value="i-36." placeholder="número da viatura">
             <hr>
             <input type="button" id="btn_historic" value="Enviar">
         </div>
-
     </div>
 
     <!-- Menu -->
