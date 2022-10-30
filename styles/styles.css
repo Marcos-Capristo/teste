@@ -82,10 +82,6 @@ body p{
     padding: 20px 0px 10px 0px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
-.quilleditor{
-    width:800px;
-    height: 300px;
-}
 .submodal > textarea:focus, input:focus {
     box-shadow: 0 0 0 0;
     outline: 0;
@@ -179,8 +175,19 @@ article h2{
     padding: 20px 0px 0px 0px;
     font-size: 1.2rem;
 }
+article h3{
+    padding: 15px 0px 0px 20px;
+    font-size: 1.0rem;
+}
 article p{
-    padding: 5px 0px 10px 0px;
+    padding: 5px 0px 10px 20px;
+}
+article img{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 12cm;
+    border: 1px solid black;
 }
 #i_panel_number{
     width: 100%;
@@ -200,15 +207,19 @@ article p{
 .smalltext{
     width:130px
 }
-.textbox{
+.quilleditor{
+    width:800px;
+    height: 300px;
     background-color: whitesmoke;
-    width: 100%;
     border: none;
     font-size: 12pt;
     line-height: 1.5rem;
     text-align: justify;
     outline: none;
     resize: none;
+}
+.quilleditor img{
+    width: 200px;
 }
 
 @media print {

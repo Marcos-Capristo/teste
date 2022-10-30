@@ -140,8 +140,9 @@ class Report{
         document.querySelector('#i_panel_historic').innerHTML = `<h2>${title}</h2><p>${texto}.</p>`
     }
     writeInforms(){
+        let title = document.querySelector('#titleinforms').value.trim()
         let delta = quill.root.innerHTML
-        document.querySelector('#i_panel_informs').innerHTML = delta
+        document.querySelector('#i_panel_informs').innerHTML = `<h2>${title}</h2>${delta}`
     }
 }
 
@@ -243,7 +244,12 @@ document.querySelector('#selectlocal').addEventListener('change', function(){
     }
 })
 
+var toolbarOptions = ['bold', 'italic', 'underline', 'strike', 'image'];
+
 let quill = new Quill('#quillinforms', {
+    modules: {
+        toolbar: toolbarOptions
+      },
     theme: 'snow'
   });
 
