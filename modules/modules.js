@@ -33,6 +33,7 @@ class Report{
         this.number = ''
         this.designatedDate = new Date()
         this.examDate = new Date()
+        this.expert = 'Marcos Capristo'
     }
     set number(number){
         this._number = number.toUpperCase()
@@ -52,6 +53,12 @@ class Report{
     get examDate(){
         return this.__examDate
     }
+    set expert(expert){
+        this._expert = expert.trim()
+    }
+    get expert(){
+        return this._expert
+    }
     writeNumber(parentElement){
         let texto = 'Laudo Técncio Pericial'
         const numero = document.querySelector('#inumber').value
@@ -67,9 +74,10 @@ class Report{
         element.innerHTML=texto
     }
     writePreamble(){
+        this.expert = document.querySelector('#iexpert').value
+        let _expert = this.expert
         const date = formatDate(report.designatedDate)
         let director = document.querySelector('#idirector').value
-        let expert = document.querySelector('#iexpert').value
         let delegate = document.querySelector('#idelegate').value
         if(document.querySelector('#selectdireitor').value == 'Diretor'){
             director = `pelo Diretor deste Instituto de Criminalística, o Perito Criminal Dr. ${director}`
@@ -77,16 +85,16 @@ class Report{
             director = `pela Diretora deste Instituto de Criminalística, a Perita Criminal Dra. ${director}`
         }
         if(document.querySelector('#selectexpert').value == 'Perito'){
-            expert = `designado o Perito Criminal ${expert}`
+            _expert = `designado o Perito Criminal ${_expert}`
         }else{
-            expert = `designada a Perita Criminal ${expert}`
+            _expert = `designada a Perita Criminal ${_expert}`
         } 
         if(document.querySelector('#selectdelegate').value == 'Delegado'){
             delegate = `o Delegado de Polícia Dr. ${delegate}`
         }else{
             delegate = `a Delegada de Polícia Dra.  ${delegate}`
         }           
-        let texto = `Em ${date}, na cidade de Limeira e no Instituto de Criminalística, da Superintendência da Polícia Técnico-Científica, da Secretaria de Segurança Pública do Estado de São Paulo, em conformidade com o disposto no art. 178 do Decreto-Lei 3689 de 3-10-1941 e Decreto-Lei 42847 de 9-2-1998, ${director}, foi ${expert} para proceder ao Exame Pericial especificado em requisição de exame assinada pela Autoridade Policial, ${delegate}.` 
+        let texto = `Em ${date}, na cidade de Limeira e no Instituto de Criminalística, da Superintendência da Polícia Técnico-Científica, da Secretaria de Segurança Pública do Estado de São Paulo, em conformidade com o disposto no art. 178 do Decreto-Lei 3689 de 3-10-1941 e Decreto-Lei 42847 de 9-2-1998, ${director}, foi ${_expert} para proceder ao Exame Pericial especificado em requisição de exame assinada pela Autoridade Policial, ${delegate}.` 
         document.querySelector('#i_panel_preamble').innerHTML = texto
     }
     writeObjective(){
@@ -111,18 +119,18 @@ class Report{
     writeHistoric(){
         const title = document.querySelector('#titlehistoric').value.trim()
         let date = formatDate(this.examDate)
-        let hour = formatTime('10:30')
-        let expert = document.querySelector('#iexpert').value.trim()
+        let hour = formatTime(document.querySelector('#iexamtime').value)
+        let _expert = this.expert
         let local = `${document.querySelector('#ilocaltype').value}`
         let guarnicao = `${document.querySelector('#selectguarnicao').value}, representada na pessoa ${document.querySelector('#iguarnicaopatente').value.trim()} ${document.querySelector('#iguarnicaopessoa').value.trim()}, de posse da viatura ${document.querySelector('#iguarnicaovtr').value.trim()}`
         let texto = ''
         if(document.querySelector('#selectexpert').value == 'Perito'){
-            expert = `o Perito Criminal ${expert}`
+            _expert = `o Perito Criminal ${_expert}`
         }else{
-            expert = `a Perita Criminal ${expert}`
+            _expert = `a Perita Criminal ${_expert}`
         } 
         let ftp = document.querySelector('#ifotografo').value.trim()
-        texto = `Em ${date} às ${hour}, ${expert} e ${document.querySelector('#selectftp').value} ${ftp},`
+        texto = `Em ${date} às ${hour}, ${_expert} e ${document.querySelector('#selectftp').value} ${ftp},`
         switch(document.querySelector('#selectlocal').selectedIndex){
         case 0:
             texto += ` dirigiram-se ao local indicado, ${local}, e realizaram o exame requisitado. Quando da chegada da equipe, a ${guarnicao}, e que guarnecia o local, deu informes e acompanhou o exame`
@@ -178,10 +186,8 @@ function formatDate(data){
 }
 
 function formatTime(_hora){
-    const hora = _hora
-    const hour = '10'
-    const min = '30'
-    return `${hour}h${min}`
+    const hora = _hora.replace(':','h')    
+    return hora
 }
 
 function showModal(element){
@@ -243,6 +249,13 @@ document.querySelector('#selectlocal').addEventListener('change', function(){
         break
     }
 })
+
+let btnclose = document.querySelectorAll('.btn_close')
+for (let i = 0; i < btnclose.length; i++){
+    btnclose[i].addEventListener('click', function(){
+        hideModal()
+    })
+}
 
 var toolbarOptions = ['bold', 'italic', 'underline', 'strike', 'image'];
 

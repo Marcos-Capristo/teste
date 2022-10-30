@@ -15,10 +15,11 @@
 <body>
 
 <!-- Início das janelas de edição -->
+    <!-- As janelas abaixo tem suas propriedades CSS display: none e serão exibidas como formulários somente quando o usuário as abrir pelo menu. São formulários que permitiem a edição mais rápida do relatório -->
 
     <div id="modal">
 
-        <!-- NÚMERO DO LAUDO-->
+        <!-- NÚMERO DO LAUDO -->
         <div class="submodal" id="submodalnumber">
             <h2>Número do Laudo</h2>
             <hr>
@@ -28,6 +29,7 @@
             <input type="date" class="longetext" id="idesignationdate">
             <hr>
             <input type="button" id="btn_number" value="Enviar">
+            <input type="button" class="btn_close" value="Fechar">
         </div>
 
         <!-- PREÂMBULO -->
@@ -51,6 +53,7 @@
             <input type="text" class="longetext" id="idelegate">
             <hr>
             <input type="button" id="btn_preamble" value="Enviar">
+            <input type="button" class="btn_close" value="Fechar">
         </div>
 
         <!-- OBJETIVO -->
@@ -71,6 +74,7 @@
             <input type="text" class="longetext" id="inature">
             <hr>
             <input type="button" id="btn_objective" value="Enviar">
+            <input type="button" class="btn_close" value="Fechar">
         </div>
 
         <!-- HISTÓRICO -->
@@ -79,7 +83,7 @@
             <hr>
             <p>Data e hora do Exame</p>
             <input type="date" class="medletext" id="iexamdate">
-            <input type="time" class="medletext" id="iexamtime">
+            <input type="time" class="medletext" id="iexamtime" step=900>
             <p>
                 <select id="selectftp" class="medletext">
                     <option class="medletext" value="o Fotógrafo Técnico Pericial">Fotógrafo</option>
@@ -110,34 +114,39 @@
             <input type="text" class="smalltext" id="iguarnicaovtr" value="i-36." placeholder="número da viatura">
             <hr>
             <input type="button" id="btn_historic" value="Enviar">
+            <input type="button" class="btn_close" value="Fechar">
         </div>
 
         <!-- INFORMES -->
         <div class="submodal" id="submodalinforms">
             <input type="text" class="title" id="titleinforms" value="Informes"></input>
             <hr>
-            <!-- <p>Informes:</p>
-            <textarea id="textareainforms"></textarea> -->
-
-
             <div class = "quilleditor" id="quillinforms">
-                <p>Hello World!</p>
-                <p>Some initial <strong>bold</strong> text</p>
-                <p><br></p>
             </div>
-
-
             <hr>
             <input type="button" id="btn_informs" value="Enviar">
+            <input type="button" class="btn_close" value="Fechar">
         </div>
 
-         <!-- MODELO -->
-         <div class="submodal" id="submodalmodelo">
+        <!-- LOCAL - Falta implementar o javascript -->
+        <div class="submodal" id="submodallocal">
+            <input type="text" class="title" id="titlelocal" value="Local - Descrição e Exame"></input>
+            <hr>
+            <div class = "quilleditor" id="quillinforms">
+            </div>
+            <hr>
+            <input type="button" id="btn_local" value="Enviar">
+            <input type="button" class="btn_local" value="Fechar">
+        </div> 
+
+        <!-- MODELO - Copiar e colar as linhas abaixo para uma nova janela -->
+        <div class="submodal" id="submodalmodelo">
             <input type="text" class="title" id="titlemodel" value="Modelo"></input>
             <hr>
             <!-- Aqui vai i conteúdo -->
             <hr>
             <input type="button" id="btn_model" value="Enviar">
+            <input type="button" class="btn_close" value="Fechar">
         </div> 
     </div>
 

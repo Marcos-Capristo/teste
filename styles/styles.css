@@ -86,6 +86,17 @@ body p{
     box-shadow: 0 0 0 0;
     outline: 0;
 }
+.submodal #irdo{
+    text-transform: uppercase;
+}
+.submodal .btn_close{
+    float:right;
+    background-color: rgba(255, 230, 0, 0.5);
+}
+.submodal .btn_close:hover{
+    float:right;
+    background-color: rgba(255, 230, 0, 0.76);
+}
 #report{
     width: 800px;
     margin: auto;
