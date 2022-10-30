@@ -152,6 +152,11 @@ class Report{
         let delta = quill.root.innerHTML
         document.querySelector('#i_panel_informs').innerHTML = `<h2>${title}</h2>${delta}`
     }
+    writeLocal(){
+        let title = document.querySelector('#titlelocal').value.trim()
+        let delta = quillLocal.root.innerHTML
+        document.querySelector('#i_panel_local').innerHTML = `<h2>${title}</h2>${delta}`
+    }
 }
 
 const report = new Report()
@@ -257,11 +262,19 @@ for (let i = 0; i < btnclose.length; i++){
     })
 }
 
-var toolbarOptions = ['bold', 'italic', 'underline', 'strike', 'image'];
+var toolbarOptions = ['bold', 'italic', 'underline', 'strike'];
+var toolbarOptions1 = ['bold', 'italic', 'underline', 'strike', 'image'];
 
 let quill = new Quill('#quillinforms', {
     modules: {
         toolbar: toolbarOptions
+      },
+    theme: 'snow'
+  });
+
+  let quillLocal = new Quill('#quilllocal', {
+    modules: {
+        toolbar: toolbarOptions1
       },
     theme: 'snow'
   });
@@ -286,27 +299,41 @@ document.querySelector('#i_informs').addEventListener('click', function(){
     showModal('#submodalinforms')
 })
 
+document.querySelector('#i_local').addEventListener('click', function(){
+    showModal('#submodallocal')
+})
+
 document.querySelector('#btn_number').addEventListener('click', function(){
     report.writeNumber('#i_panel_number')
     hideModal()
+    showModal('#submodalpreamble')
 })
 
 document.querySelector('#btn_preamble').addEventListener('click', function(){
     report.writePreamble()
     hideModal()
+    showModal('#submodalobjective')
 })
 
 document.querySelector('#btn_objective').addEventListener('click', function(){
     report.writeObjective()
     hideModal()
+    showModal('#submodalhistoric')
 })
 
 document.querySelector('#btn_historic').addEventListener('click', function(){
     report.writeHistoric()
     hideModal()
+    showModal('#submodalinforms')
 })
 
 document.querySelector('#btn_informs').addEventListener('click', function(){
     report.writeInforms()
+    hideModal()
+    showModal('#submodallocal')
+})
+
+document.querySelector('#btn_local').addEventListener('click', function(){
+    report.writeLocal()
     hideModal()
 })
