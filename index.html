@@ -134,10 +134,10 @@
             <hr>
             <p><a href="locais.html" target="_blank">Exmeplos de Locais</a></p>
             <div class = "quilleditor" id="quilllocal">
-            <h3>Descrição do Local</h3>
+            <!-- <h3>Descrição do Local</h3>
             <p></p>
             <h3>Exame do Local</h3>
-            <p></p>
+            <p></p> -->
             </div>
             <hr>
             <input type="button" id="btn_local" value="Enviar">
@@ -150,8 +150,7 @@
             <input type="text" class="title" id="titleveiculo" value="Descrição e Exame do Veículo"></input>
             <hr>
             <div class = "quilleditor" id="quillveiculo">
-                <h3>Tipo - marca - model</h3>
-
+                <!-- <h3>Tipo - marca - model</h3>
                 <h3>Identificação</h3>
                 <p></p>
                 <h3>Danos Observados</h3>
@@ -159,12 +158,43 @@
                 <h3>Condições dos Pneus</h3>
                 <p></p>
                 <h3>Testes Operacionais</h3>
-                <p></p>
-                </div>
+                <p></p> -->
+            </div>
             <hr>
             <input type="button" id="btn_veiculo" value="Enviar">
             <input type="button" class="btn_close" value="Fechar">
         </div> 
+
+        <!-- PEÇA -->
+        <div class="submodal" id="submodalthing">
+            <input type="text" class="title" id="titlething" value="Descrição e Exame da Peça"></input>
+            <hr>
+            <div class = "quilleditor" id="quillthing"></div>
+            <hr>
+            <input type="button" id="btn_thing" value="Enviar">
+            <input type="button" class="btn_close" value="Fechar">
+        </div> 
+
+        <!-- CADÁVER -->
+        <div class="submodal" id="submodalcorpuse">
+            <input type="text" class="title" id="titlecorpuse" value="Descrição e Exame do Cadáver"></input>
+            <hr>
+            <div class = "quilleditor" id="quillcorpuse"></div>
+            <hr>
+            <input type="button" id="btn_corpuse" value="Enviar">
+            <input type="button" class="btn_close" value="Fechar">
+        </div> 
+
+        <!-- CONCLUSÃO -->
+        <div class="submodal" id="submodalconclusion">
+            <input type="text" class="title" id="titleconclusion" value="Conclusão"></input>
+            <hr>
+            <div class = "quilleditor" id="quillconclusion"></div>
+            <hr>
+            <input type="button" id="btn_conclusion" value="Enviar">
+            <input type="button" class="btn_close" value="Fechar">
+        </div> 
+
 
         <!-- MODELO - Copiar e colar as linhas abaixo para uma nova janela -->
         <div class="submodal" id="submodalmodelo">
@@ -189,6 +219,8 @@
                 <li><a href="#" id="i_informs">Informes</a></li>
                 <li><a href="#" id="i_local">Local</a></li>
                 <li><a href="#" id="i_veicle">Veículo</a></li>
+                <li><a href="#" id="i_thing">Peça</a></li>
+                <li><a href="#" id="i_corpuse">Cadáver</a></li>
                 <li><a href="#" id="i_conclusion">Conclusão</a></li>
             </li>
             </ul>
@@ -198,7 +230,7 @@
                 <li><a href="#">Requisição ao NBB</a></li>
             </li>
             </ul>
-            <li><a href="#">Textos</a></li>
+            <li><a href="#" onclick="imprimir()">Imprimir</a></li>
         </ul>
     </nav>
 
@@ -218,7 +250,7 @@
         </header>
         <article>
 <!-- Número do Laudo-->
-        <div id="i_panel_number"></div>
+        <div id="i_panel_number">Laudo Técnico Pericial</div>
 <!-- Preâmbulo -->
         <div id="i_panel_preamble"></div>
 <!-- Objetivo -->
@@ -231,6 +263,12 @@
         <div id="i_panel_local"></div>
 <!-- Veículo -->
         <div id="i_panel_veiculo"></div>
+<!-- Peça -->
+        <div id="i_panel_thing"></div>
+<!-- Cadáver -->
+        <div id="i_panel_corpuse"></div>
+<!-- Conclusão -->
+        <div id="i_panel_conclusion"></div>
         
             <!-- <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio cum consectetur, recusandae repellat commodi praesentium nesciunt assumenda neque sapiente? Eius doloribus laboriosam a consequuntur officia, ipsa quam blanditiis assumenda beatae!</p>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas enim reiciendis itaque aliquam sint consectetur explicabo eos, molestias ipsam eius tenetur, sit perferendis consequuntur porro quaerat architecto expedita? Quasi, mollitia quos culpa necessitatibus deserunt qui deleniti eligendi vero totam vel sequi blanditiis nemo neque veritatis et saepe ad iure ipsam quas suscipit velit maxime modi esse? Sed sint fugiat sit, accusamus incidunt necessitatibus repellat iure dolores reiciendis recusandae similique blanditiis neque dolore? Consequuntur quas ratione, fugiat porro natus facere, error rerum excepturi nulla possimus deleniti iure accusantium eius dolore sit aut non iste id autem explicabo blanditiis! Minima maiores exercitationem aliquid delectus, eius ad voluptatum facilis aliquam, nesciunt iure labore distinctio eum ab sequi laboriosam unde eveniet tempora, nulla reiciendis dicta recusandae provident? Ad nemo deleniti ducimus ratione veniam ipsum unde autem cupiditate sequi. Natus optio, est dolores earum cumque laudantium in nisi rerum error ipsum molestias voluptas facilis ullam, asperiores reprehenderit sed doloribus dolor numquam maiores commodi voluptatibus recusandae, deleniti quas? Voluptas magnam id quidem nesciunt. Ut consectetur consequatur quod amet non ad, nulla quo omnis alias tenetur iste autem mollitia possimus natus sunt dolores. Dolor, voluptatem dolorum sed natus molestiae iste corrupti saepe eos hic, ex debitis adipisci!</p>

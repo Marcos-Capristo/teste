@@ -61,7 +61,12 @@ class Report{
     }
     writeNumber(parentElement){
         let texto = 'Laudo Técncio Pericial'
-        const numero = document.querySelector('#inumber').value
+        const numero = document.querySelector('#inumber').value.trim()
+        if(numero == ''){
+            alert('Digite o número do laudo.')
+            document.querySelector('#inumber').focus()
+            return
+        }
         const data = document.querySelector('#idesignationdate').value
         if(numero != ''){
             this.number = formatMilhar(numero)
@@ -72,13 +77,25 @@ class Report{
         const element = document.querySelector(parentElement)
         element.className = 'title_0'
         element.innerHTML=texto
+        hideModal()
+        showModal('#submodalpreamble')
     }
     writePreamble(){
+        let director = document.querySelector('#idirector').value.trim()
+        if(director == ''){
+            alert('Informe o nome do diretor.')
+            document.querySelector('#idirector').focus()
+            return
+        }
         this.expert = document.querySelector('#iexpert').value
         let _expert = this.expert
-        const date = formatDate(report.designatedDate)
-        let director = document.querySelector('#idirector').value
         let delegate = document.querySelector('#idelegate').value
+        if(delegate == ''){
+            alert('Informe o nome do delegado.')
+            document.querySelector('#idelegate').focus()
+            return
+        }
+        const date = formatDate(report.designatedDate)       
         if(document.querySelector('#selectdireitor').value == 'Diretor'){
             director = `pelo Diretor deste Instituto de Criminalística, o Perito Criminal Dr. ${director}`
         }else{
@@ -96,11 +113,26 @@ class Report{
         }           
         let texto = `Em ${date}, na cidade de Limeira e no Instituto de Criminalística, da Superintendência da Polícia Técnico-Científica, da Secretaria de Segurança Pública do Estado de São Paulo, em conformidade com o disposto no art. 178 do Decreto-Lei 3689 de 3-10-1941 e Decreto-Lei 42847 de 9-2-1998, ${director}, foi ${_expert} para proceder ao Exame Pericial especificado em requisição de exame assinada pela Autoridade Policial, ${delegate}.` 
         document.querySelector('#i_panel_preamble').innerHTML = texto
+        hideModal()
+        showModal('#submodalobjective')
     }
     writeObjective(){
         const title = document.querySelector('#titleobjective').value.trim()
-        const objective = document.querySelector('#iobjective').value
+        if(title == ''){
+            title = 'Objetivo'
+        }
+        const objective = document.querySelector('#iobjective').value.trim()
+        if(objective == ''){
+            alert('Informeo objetivo')
+            document.querySelector('#iobjective').focus()
+            return
+        }
         const nature = `${document.querySelector('#inature').value}.`
+        if(nature == ''){
+            alert('Informeo a natureza do exame')
+            document.querySelector('#inature').focus()
+            return
+        }
         const selectRdo = document.querySelector('#selectrdo').value
         const year = this.designatedDate.getFullYear()
         let rdo = `${document.querySelector('#irdo').value.toUpperCase().trim()}`
@@ -115,6 +147,8 @@ class Report{
         }
         const texto = `O objetivo do exame pericial, em conformidade com a requisição ${rdo} era ${objective}, sendo sua natureza, ${nature}`
         document.querySelector('#i_panel_objective').innerHTML = `<h2>${title}</h2><p>${texto}</p>`
+        hideModal()
+        showModal('#submodalhistoric')
     }
     writeHistoric(){
         const title = document.querySelector('#titlehistoric').value.trim()
@@ -146,21 +180,60 @@ class Report{
             break
         }   
         document.querySelector('#i_panel_historic').innerHTML = `<h2>${title}</h2><p>${texto}.</p>`
+        hideModal()
+        showModal('#submodalinforms')
     }
     writeInforms(){
+        if(quill.getLength()<=100){
+            return
+        }
         let title = document.querySelector('#titleinforms').value.trim()
         let delta = quill.root.innerHTML
         document.querySelector('#i_panel_informs').innerHTML = `<h2>${title}</h2>${delta}`
     }
     writeLocal(){
+        if(quillLocal.getLength()<=100){
+            return
+        }
         let title = document.querySelector('#titlelocal').value.trim()
         let delta = quillLocal.root.innerHTML
         document.querySelector('#i_panel_local').innerHTML = `<h2>${title}</h2>${delta}`
     }
     writeVeiculo(){
+        if(quillVeiculo.getLength()<=100){
+            return
+        }
         let title = document.querySelector('#titleveiculo').value.trim()
         let delta = quillVeiculo.root.innerHTML
         document.querySelector('#i_panel_veiculo').innerHTML = `<h2>${title}</h2>${delta}`
+    }
+    writeThing(){
+        if(quillThing.getLength()<=100){
+            return
+        }
+        let title = document.querySelector('#titlething').value.trim()
+        let delta = quillThing.root.innerHTML
+        document.querySelector('#i_panel_thing').innerHTML = `<h2>${title}</h2>${delta}`
+    }
+    writeCorpuse(){
+        if(quillCorpuse.getLength()<=100){
+            return
+        }
+        let title = document.querySelector('#titlecorpuse').value.trim()
+        let delta = quillCorpuse.root.innerHTML
+        document.querySelector('#i_panel_corpuse').innerHTML = `<h2>${title}</h2>${delta}`
+    }
+
+    writeConclusion(){
+        if(quillConclusion.getLength()<=100){
+            alert('Digite o texto da coclusão.')
+            quillConclusion.focus
+        }else{
+            let title = document.querySelector('#titleconclusion').value.trim()
+            let delta = quillConclusion.root.innerHTML
+            document.querySelector('#i_panel_conclusion').innerHTML = `<h2>${title}</h2>${delta}`
+            hideModal()
+        }
     }
 
 }
@@ -292,6 +365,27 @@ let quill = new Quill('#quillinforms', {
     theme: 'snow'
   });
 
+  let quillThing = new Quill('#quillthing', {
+    modules: {
+        toolbar: toolbarOptions1
+      },
+    theme: 'snow'
+  });
+
+  let quillCorpuse = new Quill('#quillcorpuse', {
+    modules: {
+        toolbar: toolbarOptions1
+      },
+    theme: 'snow'
+  });
+
+  let quillConclusion = new Quill('#quillconclusion', {
+    modules: {
+        toolbar: toolbarOptions1
+      },
+    theme: 'snow'
+  });
+
 document.querySelector('#i_number').addEventListener('click', function(){
     showModal('#submodalnumber')
 })
@@ -320,28 +414,40 @@ document.querySelector('#i_veicle').addEventListener('click', function(){
     showModal('#submodalveiculo')
 })
 
+document.querySelector('#i_thing').addEventListener('click', function(){
+    showModal('#submodalthing')
+})
+
+document.querySelector('#i_corpuse').addEventListener('click', function(){
+    showModal('#submodalcorpuse')
+})
+
+document.querySelector('#i_conclusion').addEventListener('click', function(){
+    showModal('#submodalconclusion')
+})
+
 document.querySelector('#btn_number').addEventListener('click', function(){
     report.writeNumber('#i_panel_number')
-    hideModal()
-    showModal('#submodalpreamble')
+    //hideModal()
+    //showModal('#submodalpreamble')
 })
 
 document.querySelector('#btn_preamble').addEventListener('click', function(){
     report.writePreamble()
-    hideModal()
-    showModal('#submodalobjective')
+    //hideModal()
+    //showModal('#submodalobjective')
 })
 
 document.querySelector('#btn_objective').addEventListener('click', function(){
     report.writeObjective()
-    hideModal()
-    showModal('#submodalhistoric')
+    //hideModal()
+    //showModal('#submodalhistoric')
 })
 
 document.querySelector('#btn_historic').addEventListener('click', function(){
     report.writeHistoric()
-    hideModal()
-    showModal('#submodalinforms')
+    //hideModal()
+    //showModal('#submodalinforms')
 })
 
 document.querySelector('#btn_informs').addEventListener('click', function(){
@@ -359,12 +465,32 @@ document.querySelector('#btn_local').addEventListener('click', function(){
 document.querySelector('#btn_veiculo').addEventListener('click', function(){
     report.writeVeiculo()
     hideModal()
+    showModal('#submodalthing')
 })
 
+document.querySelector('#btn_thing').addEventListener('click', function(){
+    report.writeThing()
+    hideModal()
+    showModal('#submodalcorpuse')
+})
 
+document.querySelector('#btn_corpuse').addEventListener('click', function(){
+    report.writeCorpuse()
+    hideModal()
+    showModal('#submodalconclusion')
+})
+
+document.querySelector('#btn_conclusion').addEventListener('click', function(){
+    report.writeConclusion()
+})
+
+function imprimir(){
+    document.title = `Laudo Técnico Pericial ${report.number}/${report.designatedDate.getFullYear()} - ${report.expert}`
+    print() 
+}
 
 function teste(){
-    document.querySelector('#quilllocal').innerHTML+='<h3>Outro Parágrafo</h3>'
+    quillVeiculo.root.innerHTML+='<h3>Outro Parágrafo acrescentado depois</h3>'
 }
 
 
