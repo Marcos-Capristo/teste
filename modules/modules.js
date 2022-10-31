@@ -157,6 +157,12 @@ class Report{
         let delta = quillLocal.root.innerHTML
         document.querySelector('#i_panel_local').innerHTML = `<h2>${title}</h2>${delta}`
     }
+    writeVeiculo(){
+        let title = document.querySelector('#titleveiculo').value.trim()
+        let delta = quillVeiculo.root.innerHTML
+        document.querySelector('#i_panel_veiculo').innerHTML = `<h2>${title}</h2>${delta}`
+    }
+
 }
 
 const report = new Report()
@@ -279,6 +285,13 @@ let quill = new Quill('#quillinforms', {
     theme: 'snow'
   });
 
+  let quillVeiculo = new Quill('#quillveiculo', {
+    modules: {
+        toolbar: toolbarOptions1
+      },
+    theme: 'snow'
+  });
+
 document.querySelector('#i_number').addEventListener('click', function(){
     showModal('#submodalnumber')
 })
@@ -301,6 +314,10 @@ document.querySelector('#i_informs').addEventListener('click', function(){
 
 document.querySelector('#i_local').addEventListener('click', function(){
     showModal('#submodallocal')
+})
+
+document.querySelector('#i_veicle').addEventListener('click', function(){
+    showModal('#submodalveiculo')
 })
 
 document.querySelector('#btn_number').addEventListener('click', function(){
@@ -336,4 +353,31 @@ document.querySelector('#btn_informs').addEventListener('click', function(){
 document.querySelector('#btn_local').addEventListener('click', function(){
     report.writeLocal()
     hideModal()
+    showModal('#submodalveiculo')
 })
+
+document.querySelector('#btn_veiculo').addEventListener('click', function(){
+    report.writeVeiculo()
+    hideModal()
+})
+
+
+
+function teste(){
+    document.querySelector('#quilllocal').innerHTML+='<h3>Outro Parágrafo</h3>'
+}
+
+
+
+/*
+
+Falta verificar se algumas caixas estão em branco para pular sem escrever no laulo.
+Criar a lista de quesitos.
+Ordenar Numericamente os títulos.
+Criar o módulo de vistoria de veículos.
+Criar módulo de cadáveres.
+Criar o móvulo de peças.
+Criar o módulo de conclusão.
+
+
+*/

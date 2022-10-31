@@ -234,6 +234,9 @@ article img{
 }
 
 @media print {
+    *, html, body{
+        background-color: white;
+    }
     header{
         padding-top: 0;
     }
