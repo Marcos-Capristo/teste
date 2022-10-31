@@ -341,8 +341,9 @@ for (let i = 0; i < btnclose.length; i++){
     })
 }
 
-var toolbarOptions = ['bold', 'italic', 'underline', 'strike'];
-var toolbarOptions1 = ['bold', 'italic', 'underline', 'strike', 'image'];
+let toolbarOptions = [{ 'header': [3, false] },'bold','italic', 'underline', { 'script': 'sub'}, { 'script': 'super' }, { 'list': 'ordered'}, { 'list': 'bullet' }];
+
+let toolbarOptions1 = [{ 'header': [3, false] },'bold','italic', 'underline', { 'script': 'sub'}, { 'script': 'super' }, { 'list': 'ordered'}, { 'list': 'bullet' },'image', 'color'];
 
 let quill = new Quill('#quillinforms', {
     modules: {
